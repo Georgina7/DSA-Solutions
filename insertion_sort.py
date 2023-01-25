@@ -44,7 +44,7 @@
 def insertionSort1(n, arr):
     store = arr[n-1]
     for i in range(n-1, -1, -1):
-        if arr[i - 1] > store:
+        if arr[i - 1] > store and i != 0:
             arr[i] = arr[i - 1]
             print(*arr)
         else:
