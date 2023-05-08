@@ -42,3 +42,20 @@ class Solution:
             else:
                 start += 1
         return count
+    
+## Solution 2 - Time Complexity[O(n)], Space Complexity[O(n)]
+class Solution:
+    def maxOperations(self, nums: List[int], k: int) -> int:
+        pairs = {}
+        for num in nums:
+            pairs[num] = pairs.get(num, 0) + 1
+
+        count = 0
+        for key in pairs.keys():
+            if k - key in pairs:
+                if k - key == key:
+                    count += (pairs[key] // 2)
+                else:
+                    count += min(pairs[key], pairs[k - key])
+                    pairs[key] = 0
+        return count
